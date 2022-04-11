@@ -42,7 +42,7 @@ func (d *Directory) Print() {
 	fmt.Println("total: ", total)
 }
 
-func countDir(directory string, globalCounter *Global) Directory {
+func countDir(directory string, globalCounter *Global) {
 	dirCounter := Directory{}
 	dirCounter.SetName(directory)
 
@@ -51,7 +51,7 @@ func countDir(directory string, globalCounter *Global) Directory {
 	items, _ := ioutil.ReadDir(directory)
 	for _, item := range items {
 		if item.IsDir() {
-			// handle directory there
+			// handle directory
 			dotFolders := strings.Split(item.Name(), ".")
 			if dotFolders[0] == "" {
 				continue
@@ -60,10 +60,9 @@ func countDir(directory string, globalCounter *Global) Directory {
 			target := directory + "/" + item.Name()
 			countDir(target, globalCounter)
 		} else {
-			// handle file there
+			// handle file
 			target := directory + "/" + item.Name()
 			fileInfo := countFile(target, globalCounter)
-			// fileInfo.Print()
 			dirCounter.IncrFile()
 			dirCounter.Update(fileInfo)
 		}
@@ -71,6 +70,4 @@ func countDir(directory string, globalCounter *Global) Directory {
 
 	dirCounter.Print()
 	fmt.Println()
-
-	return dirCounter
 }

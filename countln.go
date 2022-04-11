@@ -5,7 +5,6 @@ import (
 	"os"
 )
 
-// Determine is a path are directory or file
 func Count(path string) {
 	fi, err := os.Stat(path)
 	if err != nil {
@@ -15,18 +14,12 @@ func Count(path string) {
 
 	globalCounter := Global{}
 
+	// Determine is a path are directory or file
 	switch mode := fi.Mode(); {
 	case mode.IsDir():
-		// case path is directory
-		// dirInfo := countDir(path)
-		// dirInfo.Print()
-		_ = countDir(path, &globalCounter)
-		// return
+		countDir(path, &globalCounter)
 	case mode.IsRegular():
-		// case path is file
-		fileInfo := countFile(path, &globalCounter)
-		fileInfo.Print()
-		// return
+		_ = countFile(path, &globalCounter)
 	}
 
 	globalCounter.Print()

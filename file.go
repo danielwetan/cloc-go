@@ -107,5 +107,8 @@ func countFile(filename string, globalCounter *Global) File {
 	}
 	globalCounter.Update(&f)
 
+	f.Print()
+	fmt.Println()
+
 	return f
 }
