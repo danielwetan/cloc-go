@@ -30,6 +30,4 @@ func Count(path string) {
 	}
 
 	globalCounter.Print()
-
-	return
 }

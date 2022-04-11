@@ -8,6 +8,7 @@ import (
 
 type Directory struct {
 	Name       string
+	Files      int
 	Whitespace int
 	Comment    int
 	Code       int
@@ -16,6 +17,10 @@ type Directory struct {
 
 func (d *Directory) SetName(name string) {
 	d.Name = name
+}
+
+func (d *Directory) IncrFile() {
+	d.Files++
 }
 
 func (d *Directory) Update(fileInfo File) {
@@ -28,6 +33,7 @@ func (d *Directory) Update(fileInfo File) {
 func (d *Directory) Print() {
 	fmt.Println("-- DIRECTORY COUNTER --")
 	fmt.Println("name: ", d.Name)
+	fmt.Println("files: ", d.Files)
 	fmt.Println("whitespace: ", d.Whitespace)
 	fmt.Println("comment: ", d.Comment)
 	fmt.Println("code: ", d.Code)
@@ -56,6 +62,7 @@ func countDir(directory string, globalCounter *Global) Directory {
 			target := directory + "/" + item.Name()
 			fileInfo := countFile(target, globalCounter)
 			// fileInfo.Print()
+			dirCounter.IncrFile()
 			dirCounter.Update(fileInfo)
 		}
 	}
