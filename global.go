@@ -10,7 +10,6 @@ type Global struct {
 }
 
 func (c *Global) Update(fileInfo *File) {
-	fmt.Println("UPDATE")
 	c.Whitespace = c.Whitespace + fileInfo.Whitespace
 	c.Comment = c.Comment + fileInfo.Comment
 	c.Code = c.Code + fileInfo.Code

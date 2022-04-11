@@ -36,7 +36,7 @@ func (d *Directory) Print() {
 	fmt.Println("total: ", total)
 }
 
-func countDir(directory string) Directory {
+func countDir(directory string, globalCounter *Global) Directory {
 	dirCounter := Directory{}
 	dirCounter.SetName(directory)
 
@@ -50,11 +50,11 @@ func countDir(directory string) Directory {
 			}
 
 			target := directory + "/" + item.Name()
-			countDir(target)
+			countDir(target, globalCounter)
 		} else {
 			// handle file there
 			target := directory + "/" + item.Name()
-			fileInfo := countFile(target)
+			fileInfo := countFile(target, globalCounter)
 			// fileInfo.Print()
 			dirCounter.Update(fileInfo)
 		}
