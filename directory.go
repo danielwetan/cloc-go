@@ -46,6 +46,8 @@ func countDir(directory string, globalCounter *Global) Directory {
 	dirCounter := Directory{}
 	dirCounter.SetName(directory)
 
+	globalCounter.IncrFolders()
+
 	items, _ := ioutil.ReadDir(directory)
 	for _, item := range items {
 		if item.IsDir() {
