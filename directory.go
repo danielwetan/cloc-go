@@ -68,6 +68,6 @@ func countDir(directory string, globalCounter *Global) {
 		}
 	}
 
-	dirCounter.Print()
-	fmt.Println()
+	// dirCounter.Print()
+	// fmt.Println()
 }
