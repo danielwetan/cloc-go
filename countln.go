@@ -17,9 +17,9 @@ func Count(path string) {
 	// Determine is a path are directory or file
 	switch mode := fi.Mode(); {
 	case mode.IsDir():
-		countDir(path, &globalCounter)
+		countDir(path, globalCounter)
 	case mode.IsRegular():
-		_ = countFile(path, &globalCounter)
+		_ = countFile(path, globalCounter)
 	}
 
 	globalCounter.Print()

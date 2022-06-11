@@ -29,7 +29,7 @@ func (f *File) Print() {
 	fmt.Println()
 }
 
-func countFile(filename string, globalCounter *Global) File {
+func countFile(filename string, globalCounter Global) File {
 	file, err := os.Open(filename)
 
 	if err != nil {

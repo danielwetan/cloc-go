@@ -42,7 +42,7 @@ func (d *Directory) Print() {
 	fmt.Println("total: ", total)
 }
 
-func countDir(directory string, globalCounter *Global) {
+func countDir(directory string, globalCounter Global) {
 	dirCounter := Directory{}
 	dirCounter.SetName(directory)
 
